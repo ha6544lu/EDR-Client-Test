@@ -1,0 +1,21 @@
+::ng-deep .ol-scale-line {
+  /*bottom: 10px; /* Ensure it does not interfere with the footer */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%);
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2px;
+}
+
+::ng-deep .ol-scale-line-inner {
+  border-top: 2px solid black;
+  margin-top: 2px;
+  width: 100%;
+  height: 2px;
+}
+
+::ng-deep .ol-scale-bar {
+  display: inline-block;
+  height: 5px;
+  background: black;
+}

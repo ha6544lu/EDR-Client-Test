@@ -1,0 +1,109 @@
+<!-- Display list of collections -->
+<div *ngFor="let collection of collections">
+  <div>
+    <!-- Collection Title -->
+    <a href="javascript:void(0)" (click)="showButtons(collection)">{{ collection.title }}</a>
+    
+    <!-- Button Group and Back Button -->
+    <div *ngIf="showButtonCollections === collection && !activeView">
+        <div class="button-group">
+          <button (click)="showMetadata(collection)">Show Metadata</button>
+          <button (click)="downloadAll(collection)">Download all</button>
+          <button (click)="viewFilterForm()">Filter data</button>
+          
+        </div>
+    </div>
+    <button *ngIf="showButtonCollections === collection && activeView" (click)="backToCollection()">Back</button>
+
+    <!-- Metadata Display -->
+    <div *ngIf="showButtonCollections === collection && activeView === 'metadata'" class="metadata-container">
+    <button *ngIf="metadataShownForCollection === showButtonCollections" (click)="downloadMetadata(collection)">Download metadata</button>
+      <div>ID: {{ collection.id }}</div>
+      <div>Description: {{ collection.description }}</div>
+      <div>Keywords: {{ collection.keywords }}</div>
+      <div>Extent:
+        <div *ngFor="let extent of collection.extent | keyvalue">
+          <p>{{ extent.value | json }}</p>
+        </div>
+      </div>
+      <div>Parameters:
+        <div *ngFor="let parameter of getUniqueParameters(collection)">
+          <p>{{ parameter }}</p>
+        </div>
+      </div>
+      <div>Links:
+        <div *ngFor="let links of collection.links | keyvalue">
+          <p>{{ links.value | json }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter Form Options -->
+    <div *ngIf="showFilterForm && !filterType && showButtonCollections === collection && activeView === 'filterForm'" class="filter-form">
+      <button (click)="selectFilterType('position')">Position</button>
+      <button (click)="selectFilterType('cube')">Cube</button>
+      <!--<button type="button" (click)="viewFilterForm()">Close</button> Back button instead?-->
+    </div>
+
+    <!-- Filter Form for Position -->
+    <div *ngIf="showFilterForm && filterType === 'position' && showButtonCollections === collection" class="filter-form">
+      <form (ngSubmit)="onFilterSubmit()">
+        <label for="instructions">Please fill in criteria</label>
+        <div>
+          <label for="coordinates">Coordinates:</label>
+          <input type="text" id="coordinates" [(ngModel)]="filterCriteria.coordinates" name="coordinates">
+          <button type="button" (click)="onPointButtonClick()">Choose point in map</button>
+        </div>
+        <div>
+          <label for="from">Time/date from:</label>
+          <input type="datetime-local" id="from" [(ngModel)]="filterCriteria.from" name="from">
+        </div>
+        <div>
+          <label for="to">Time/date to:</label>
+          <input type="datetime-local" id="to" [(ngModel)]="filterCriteria.to" name="to">
+        </div>
+        <div>
+          <label>Parameters:</label>
+          <div *ngFor="let parameter of parameters">
+            <input type="checkbox" [id]="parameter" [(ngModel)]="filterCriteria.parameters[parameter]" [name]="parameter">
+            <label [for]="parameter">{{ parameter }}</label>
+          </div>
+        </div>
+        <button type="submit">Download subset</button>
+        <button type="button" (click)="viewFilterForm()">Close</button>
+      </form>
+    </div>
+
+    <!-- Filter Form for Cube -->
+    <div *ngIf="showFilterForm && filterType === 'cube' && showButtonCollections === collection" class="filter-form">
+      <form (ngSubmit)="onFilterSubmit()">
+        <div>
+          <label for="area">Bounding box</label>
+          <input type="text" id="area" [(ngModel)]="filterCriteria.area" name="area">
+          <button type="button" (click)="onDrawButtonClick()">Draw in map</button>
+        </div>
+        <div>
+          <label for="from">Time/date from:</label>
+          <input type="datetime-local" id="from" [(ngModel)]="filterCriteria.from" name="from">
+        </div>
+        <div>
+          <label for="to">Time/date to:</label>
+          <input type="datetime-local" id="to" [(ngModel)]="filterCriteria.to" name="to">
+        </div>
+        <div>
+          <label>Parameters:</label>
+          <div *ngFor="let parameter of parameters">
+            <input type="checkbox" [id]="parameter" [(ngModel)]="filterCriteria.parameters[parameter]" [name]="parameter">
+            <label [for]="parameter">{{ parameter }}</label>
+          </div>
+        </div>
+        <button type="submit">Download subset</button>
+        <button type="button" (click)="viewFilterForm()">Close</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+        
+
+

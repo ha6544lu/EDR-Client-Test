@@ -1,0 +1,22 @@
+<header>
+  <div class="title">EDR Client</div>
+</header>
+<main>
+  <div class="left-bar">
+    <app-edrcomponent #edrComponent (drawButtonClicked)="mapComponent.onDrawButtonClick()"
+    (pointButtonClicked)="mapComponent.onPointButtonClick()"></app-edrcomponent>
+    </div>
+  <div class="map-container">
+    <app-map #mapComponent (rectangleDrawn)="edrComponent.onRectangleDrawn($event)"
+    (pointDrawn)="edrComponent.onPointDrawn($event)"></app-map>
+    </div>
+</main>
+<footer>
+  <app-scaleline #mapComponent></app-scaleline><app-mouse-position #mapComponent positionTemplate="{x}, {y} m"></app-mouse-position>
+</footer>
+<!--<p>Hello!</p>
+<nav>
+  <a routerLink="/edrcomponent">EDR</a>
+</nav>
+<router-outlet></router-outlet>
+<app-edrcomponent></app-edrcomponent>-->

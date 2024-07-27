@@ -1,0 +1,15 @@
+.button-group {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.button-group button {
+    margin: 5px 0;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.metadata-container {
+    padding: 1px; 
+}
+

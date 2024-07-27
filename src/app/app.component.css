@@ -1,0 +1,43 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+header {
+    background-color: var(--header-color);
+    padding: 2em;
+    text-align: center;
+    height: 40px;
+    flex-shrink: 0;
+}
+header .title {
+    font-size: 28px;
+}
+main {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    overflow: hidden;
+    padding: 0 1em;
+}
+.left-bar {
+    width: 20em;
+    background-color: var(--sidebar-color);
+    display: flex;
+    flex-direction: column;
+    margin-left: 1px;
+    margin-top: 10px;
+    overflow-y: auto;
+}
+.map-container {
+    flex-grow: 1;
+    position: relative;
+    padding: 0; 
+}
+footer {
+    background-color: var(--header-color);
+    padding: 0.5em;
+    text-align: center;
+    height: 40px;
+    position: relative;
+}
