@@ -4,7 +4,7 @@ body {
     font-family:'Montserrat';
     color: var(--text-color);
     margin: 0; 
-    --header-color: #32ca928e;
+    --header-color: #83c585;
     --sidebar-color: #fdfcfda2; 
     --text-color: black;
 }

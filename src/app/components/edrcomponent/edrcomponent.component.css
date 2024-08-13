@@ -1,15 +1,66 @@
 .button-group {
     margin-top: 5px;
     margin-bottom: 5px;
+    display: flex; 
+    flex-direction: column;
 }
 
 .button-group button {
     margin: 5px 0;
     margin-left: 5px;
     margin-right: 5px;
+    padding: 10px 10px;
+    background-color:#4CAF50;
+    color: white;
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Shadow for raised effect */
+    transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition for effects */
+}
+
+.button-group button:hover {
+  background-color: #45a049; /* Slightly darker green on hover */
+}
+
+.button-group button:active {
+  transform: translateY(2px); /* Simulates a "press" by moving the button down */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow when pressed */
 }
 
 .metadata-container {
+    margin-top: 5px;
     padding: 1px; 
 }
 
+.metadata-title {
+    font-weight:bold;
+}
+
+.filterdata-title {
+    font-weight: bold;
+    padding: 5px;
+    margin: 1px;
+}
+
+.custom-button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 8px 8px; /* Padding for button size */
+    margin: 2px; /* Space around buttons */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 13px; /* Font size */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Shadow for raised effect */
+    transition: transform 0.2s, box-shadow 0.2s; /* Smooth transitions */
+  }
+  
+  .custom-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  .custom-button:active {
+    transform: translateY(2px); /* Pressed effect */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow on press */
+  }

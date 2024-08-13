@@ -60,13 +60,6 @@ export class EDRClientService {
         }
       });
     }
-
-    /*
-    Object.keys(filterCriteria.parameters).forEach(key => {
-      if (filterCriteria.parameters[key]) {
-        params.append('parameter-name', key);
-      }
-    });**/
     params.append('f', 'json');
     return `${baseUrl}?${params.toString()}`;
   }

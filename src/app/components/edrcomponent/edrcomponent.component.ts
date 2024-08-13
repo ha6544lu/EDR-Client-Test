@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MapComponent } from "../map/map.component";
-import { consumerPollProducersForChange } from '@angular/core/primitives/signals';
 
 @Component({
   selector: 'app-edrcomponent',
@@ -41,7 +40,7 @@ export class EDRComponentComponent implements OnInit {
   onPointButtonClick(): void {
     this.pointButtonClicked.emit();
   }  
-  //skriva metod för att returnera "pushstrategy"? hur tar jag bort subscribe
+
   getCollections(): void {
     this.edrClientService.getCollections()
     .subscribe(collections => {
@@ -84,6 +83,7 @@ export class EDRComponentComponent implements OnInit {
       const filterUrlCube = this.edrClientService.generateFilterUrlCube(this.filterCriteria, this.showButtonCollections);
       window.open(filterUrlCube, '_blank');
     }
+    this.resetFilterCriteria();
   }
 
   showMetadata(collection: any): void {
@@ -110,24 +110,22 @@ export class EDRComponentComponent implements OnInit {
     }
   }
 
-  /*viewFilterForm(): void {
-    this.activeView = 'filterForm';
-    this.showFilterForm = !this.showFilterForm;
-    if (this.showFilterForm) {
-      this.selectedCollection = null;
+  closeButtons() {
+    this.showButtonCollections = null; 
+    this.activeView = '';
+    this.resetFilterCriteria();
+  }
+
+  viewFilterForm(): void {
+    if (this.showFilterForm && this.filterType) {
+      this.filterType = null;
+    } else {
+      this.activeView = 'filterForm';
+      this.showFilterForm = !this.showFilterForm;
       this.filterType = null;
     }
-  }**/
-
-    viewFilterForm(): void {
-      if (this.showFilterForm && this.filterType) {
-        this.filterType = null;
-      } else {
-        this.activeView = 'filterForm';
-        this.showFilterForm = !this.showFilterForm;
-        this.filterType = null;
-      }
-    }
+    this.resetFilterCriteria();
+  }
 
   selectFilterType(type: string) {
     this.filterType = type;
@@ -145,6 +143,17 @@ export class EDRComponentComponent implements OnInit {
     this.activeView = null; 
     this.showFilterForm = false; 
     this.selectedCollection = null;
+    this.resetFilterCriteria(); 
+  }
+
+  resetFilterCriteria(): void {
+    this.filterCriteria = {
+      area: '',
+      coordinates: '',
+      from: '',
+      to: '',
+      parameters: {}
+    };
   }
 }
 
