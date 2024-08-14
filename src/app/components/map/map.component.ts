@@ -22,14 +22,12 @@ import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 import Draw from 'ol/interaction/Draw';
 import { Fill, Stroke, Style } from 'ol/style';
-import { MousePositionComponent } from '../mouse-position/mouse-position.component';
-import { ScalelineComponent } from '../scaleline/scaleline.component';
 import CircleStyle from 'ol/style/Circle';
 
 @Component({
   selector: 'app-map',
   standalone: true,
-  imports: [ScalelineComponent, MousePositionComponent],
+  imports: [],
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -111,7 +109,7 @@ export class MapComponent implements OnInit {
   }
 
   enableDraw(drawType: 'Point' | 'Polygon'): void {
-    this.disableDraw(); // Disable any existing draw interactions
+    this.disableDraw(); 
 
     const source = new VectorSource();
     const vector = new VectorLayer({
@@ -162,7 +160,7 @@ export class MapComponent implements OnInit {
         console.log('Point Coordinates:', coordinates);
         this.pointDrawn.emit(coordinates as [number, number]);
       }
-      this.disableDraw();  // Disable drawing after the shape/point is selected
+      this.disableDraw();  
     });
   } 
 

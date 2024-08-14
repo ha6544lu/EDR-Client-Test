@@ -5,34 +5,33 @@
 }
 header {
     background-color: var(--header-color);
-    padding: 2em;
+    padding: 3em;
     text-align: center;
     height: 40px;
     flex-shrink: 0;
 }
 header .title {
     font-size: 28px;
+    color: rgba(254, 244, 255, 0.874); 
 }
 main {
     display: flex;
     flex-direction: row;
     flex-grow: 1;
     overflow: hidden;
-    padding: 0 1em;
 }
 .left-bar {
     width: 20em;
     background-color: var(--sidebar-color);
     display: flex;
     flex-direction: column;
-    margin-left: 1px;
+    margin-left: 5px;
     margin-top: 10px;
     overflow-y: auto;
 }
 .map-container {
-    flex-grow: 1;
+    flex-grow: 20;
     position: relative;
-    padding: 1; 
 }
 footer {
     background-color: var(--header-color);
@@ -40,4 +39,10 @@ footer {
     text-align: center;
     height: 40px;
     position: relative;
+}
+
+.description {
+    color: rgba(254, 244, 255, 0.874); 
+    font-size: 20px;
+    font-style: italic;
 }

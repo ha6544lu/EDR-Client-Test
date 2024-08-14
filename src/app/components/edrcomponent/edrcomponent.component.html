@@ -4,7 +4,8 @@
     <!-- Collection Title -->
     <a href="javascript:void(0)" (click)="showButtons(collection)">{{ collection.title }}</a>
     <button *ngIf="showButtonCollections === collection && !activeView" (click)="closeButtons()" class="custom-button">Close</button>
-    <!-- Button Group and Back Button -->
+    
+    <!-- Button Group -->
     <div *ngIf="showButtonCollections === collection && !activeView">
         <div class="button-group">
           <button (click)="showMetadata(collection)">Show Metadata</button>
@@ -35,8 +36,7 @@
     <!-- Filter Form Options -->
     <div *ngIf="showFilterForm && !filterType && showButtonCollections === collection && activeView === 'filterForm'" class="filter-form">
       <button (click)="selectFilterType('position')" class="custom-button">Position</button>
-      <button (click)="selectFilterType('cube')" class="custom-button">Cube</button>
-      <!--<button type="button" (click)="viewFilterForm()">Close</button> Back button instead?-->
+      <button (click)="selectFilterType('cube')" class="custom-button">Cube</button>     
     </div>
 
     <!-- Filter Form for Position -->
